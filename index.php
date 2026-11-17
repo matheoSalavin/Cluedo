@@ -1,18 +1,12 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cluedo - Enquête au manoir</title>
-</head>
-<body>
 
-    <h1>Cluedo</h1>
-    <p>Bienvenue dans le manoir.</p>
+<?php
+require_once __DIR__ . '/config/database.php';
 
-    <?php
-        echo "Une enquête vous attend...";
-    ?>
+$resultat = $db->query("SELECT name FROM sqlite_master WHERE type = 'table'");
 
-</body>
-</html>
+echo "<h1>Tables de la base de données</h1>";
+
+while ($table = $resultat->fetchArray(SQLITE3_ASSOC)) {
+    echo "<p>" . htmlspecialchars($table['name']) . "</p>";
+}
+?>
