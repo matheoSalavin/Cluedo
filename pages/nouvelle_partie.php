@@ -17,7 +17,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_personnage'])) {
     if ($personnageChoisi !== false) {
         $_SESSION['personnage'] = $personnageChoisi['nom_personnage'];
         $_SESSION['id_personnage'] = $idPersonnage;
-}
+
+        header('Location: partie.php');
+        exit;
+    }
 }
 
 $resultat = $db->query("SELECT * FROM personnages");
