@@ -15,12 +15,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_personnage'])) {
 
     $personnageChoisi = $resultatChoix->fetchArray(SQLITE3_ASSOC);
     if ($personnageChoisi !== false) {
-    $_SESSION['personnage'] = $personnageChoisi['nom_personnage'];
-    $_SESSION['id_personnage'] = $idPersonnage;
+        $_SESSION['personnage'] = $personnageChoisi['nom_personnage'];
+        $_SESSION['id_personnage'] = $idPersonnage;
 }
 }
 
 $resultat = $db->query("SELECT * FROM personnages");
+
+if (!isset($_SESSION['coupable'])) {
+    $requeteCoupable = $db->query("SELECT * FROM personnages ORDER BY RANDOM() LIMIT 1");
+    $coupable = $requeteCoupable->fetchArray(SQLITE3_ASSOC);
+
+    $_SESSION['coupable'] = $coupable;
+}
+
+if (!isset($_SESSION['position'])) {
+    $_SESSION['position'] = 'Hall';
+}
+
+if (!isset($_SESSION['arme']) || !isset($_SESSION['piece_secrete'])) {
+    $requeteArme = $db->query("SELECT * FROM armes ORDER BY RANDOM() LIMIT 1");
+    $arme = $requeteArme->fetchArray(SQLITE3_ASSOC);
+
+    $requetePiece = $db->query("SELECT * FROM pieces ORDER BY RANDOM() LIMIT 1");
+    $piece = $requetePiece->fetchArray(SQLITE3_ASSOC);
+
+    $_SESSION['arme'] = $arme;
+    $_SESSION['piece_secrete'] = $piece;
+}
 
 ?>
 <!DOCTYPE html>
@@ -43,7 +65,13 @@ $resultat = $db->query("SELECT * FROM personnages");
         <?php
             while ($personnage = $resultat->fetchArray(SQLITE3_ASSOC)) {
                 echo "<p>";
-                echo "<input type='radio' name='id_personnage' value='" . $personnage['id_personnage'] . "' required>";
+                echo "<input type='radio' name='id_personnage' value='" . $personnage['id_personnage'] . "' required";
+
+                if (isset($_SESSION['id_personnage']) && $_SESSION['id_personnage'] == $personnage['id_personnage']) {
+                    echo " checked";
+                }
+
+                echo ">";
                 echo htmlspecialchars($personnage['nom_personnage']);
                 echo "</p>";
             }
