@@ -21,8 +21,7 @@ if (!isset($_SESSION['nombre_hypotheses'])) {
 }
 
 // Gestion du déplacement
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nouvelle_position'])) {
-
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nouvelle_position']) && !isset($_SESSION['partie_terminee'])) {
     $requeteDeplacement = $db->prepare("
         SELECT p2.nom_piece
         FROM portes
@@ -51,8 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nouvelle_position']))
 }
 
 // Gestion des hypothèses
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['faire_hypothese'])) {
-
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['faire_hypothese']) && !isset($_SESSION['partie_terminee'])) {
     $position = $_SESSION['position'];
 
     if (isset($_SESSION['hypotheses'][$position])) {
@@ -129,6 +127,7 @@ $listeArmes = $db->query("SELECT * FROM armes");
 
     <p>Vous vous trouvez dans : <?php echo htmlspecialchars($_SESSION['position']); ?></p>
 
+    <?php if (!isset($_SESSION['partie_terminee'])) { ?>
     <h2>Pièces accessibles</h2>
 
     <?php
@@ -178,6 +177,7 @@ $listeArmes = $db->query("SELECT * FROM armes");
         <button type="submit" name="faire_hypothese">Valider mon hypothèse</button>
 
     </form>
+    <?php } ?>
 
     <?php
     if ($messageHypothese != '') {

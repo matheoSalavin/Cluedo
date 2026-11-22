@@ -18,6 +18,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_personnage'])) {
         $_SESSION['personnage'] = $personnageChoisi['nom_personnage'];
         $_SESSION['id_personnage'] = $idPersonnage;
 
+        // Réinitialisation de la partie
+        $_SESSION['hypotheses'] = [];
+        $_SESSION['nombre_hypotheses'] = 0;
+        unset($_SESSION['partie_terminee']);
+
+        // Nouveau tirage de la solution secrète
+        $requeteCoupable = $db->query("SELECT * FROM personnages ORDER BY RANDOM() LIMIT 1");
+        $_SESSION['coupable'] = $requeteCoupable->fetchArray(SQLITE3_ASSOC);
+
+        $requeteArme = $db->query("SELECT * FROM armes ORDER BY RANDOM() LIMIT 1");
+        $_SESSION['arme'] = $requeteArme->fetchArray(SQLITE3_ASSOC);
+
+        $requetePiece = $db->query("SELECT * FROM pieces ORDER BY RANDOM() LIMIT 1");
+        $_SESSION['piece_secrete'] = $requetePiece->fetchArray(SQLITE3_ASSOC);
+
+        $_SESSION['position'] = 'Hall';
+
         header('Location: partie.php');
         exit;
     }
