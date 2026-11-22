@@ -21,6 +21,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_personnage'])) {
         // Réinitialisation de la partie
         $_SESSION['hypotheses'] = [];
         $_SESSION['nombre_hypotheses'] = 0;
+        $_SESSION['historique'] = [];
+        $_SESSION['pieces_visitees'] = ['Hall'];    
         unset($_SESSION['partie_terminee']);
 
         // Nouveau tirage de la solution secrète
