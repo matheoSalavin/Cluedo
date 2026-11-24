@@ -1,6 +1,6 @@
 # Cluedo
 
-Projet de jeu Cluedo réalisé dans le cadre de ma première année de BTS SIO option SLAM.
+Projet de jeu Cluedo réalisé dans le cadre de ma première année de BTS SIO.
 
 ## Description
 
