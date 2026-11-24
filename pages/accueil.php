@@ -34,6 +34,7 @@ $nombrePersonnages = $personnages['total'];
 
         <a href="nouvelle_partie.php">Nouvelle partie</a>
         <p>Nombre de personnages disponibles : <?php echo $nombrePersonnages; ?></p>
+        <a href="regles.php">Consulter les règles du jeu</a>
     </main>
 
     <footer>

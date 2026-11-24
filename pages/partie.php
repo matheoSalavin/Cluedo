@@ -147,6 +147,7 @@ $listeArmes = $db->query("SELECT * FROM armes");
     <title>Partie en cours - Cluedo</title>
 </head>
 <body>
+    <a href="regles.php">Consulter les règles du jeu</a>
 
     <?php if (isset($_SESSION['partie_terminee'])) { ?>
 
