@@ -145,8 +145,11 @@ $listeArmes = $db->query("SELECT * FROM armes");
 <head>
     <meta charset="UTF-8">
     <title>Partie en cours - Cluedo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
+    <main class="contenu contenu-partie">
     <a href="regles.php">Consulter les règles du jeu</a>
 
     <?php if (isset($_SESSION['partie_terminee'])) { ?>
@@ -264,7 +267,7 @@ $listeArmes = $db->query("SELECT * FROM armes");
     }
     ?>
 
-    <<p>Nombre d'hypothèses : <?php echo $_SESSION['nombre_hypotheses']; ?></p>
+    <p>Nombre d'hypothèses : <?php echo $_SESSION['nombre_hypotheses']; ?></p>
 
 <?php } else { ?>
 
@@ -353,6 +356,6 @@ $listeArmes = $db->query("SELECT * FROM armes");
     </form>
 
 <?php } ?>
-
+</main>
 </body>
 </html>

@@ -1,0 +1,142 @@
+/* Style général du jeu */
+
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+h2 {
+    color: #444;
+}
+
+a {
+    color: #8b0000;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Mise en forme de la page d'accueil */
+
+.entete {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.contenu {
+    max-width: 700px;
+    margin: auto;
+    padding: 30px;
+    background-color: white;
+    text-align: center;
+    border-radius: 6px;
+}
+
+.bouton {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 20px;
+    background-color: #8b0000;
+    color: white;
+    border-radius: 4px;
+}
+
+.bouton:hover {
+    background-color: #650000;
+    text-decoration: none;
+}
+
+.nombre-personnages {
+    margin-top: 25px;
+}
+
+.lien-regles {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.pied-page {
+    margin-top: 30px;
+    text-align: center;
+    color: #666;
+}
+
+
+/* Choix du personnage */
+
+.form-personnage {
+    margin-top: 20px;
+}
+
+.choix-personnage {
+    max-width: 260px;
+    margin: 12px auto;
+    padding: 8px;
+    background-color: #f2f2f2;
+    border-radius: 4px;
+    text-align: left;
+}
+
+.choix-personnage input {
+    margin-right: 10px;
+}
+
+.form-personnage .bouton {
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* Mise en forme de la partie */
+
+.contenu-partie {
+    max-width: 1000px;
+}
+
+.contenu-partie button {
+    padding: 9px 14px;
+    margin: 4px;
+    background-color: #8b0000;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.contenu-partie button:hover {
+    background-color: #650000;
+}
+
+.contenu-partie select {
+    padding: 7px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.contenu-partie table {
+    width: 100%;
+    margin-top: 15px;
+    border-collapse: collapse;
+}
+
+.contenu-partie th,
+.contenu-partie td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+.contenu-partie th {
+    background-color: #f2f2f2;
+}

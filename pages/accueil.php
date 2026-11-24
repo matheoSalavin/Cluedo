@@ -15,15 +15,17 @@ $nombrePersonnages = $personnages['total'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $titre; ?></title>
+    <link rel="stylesheet" href="../assets/style.css">
 </head>
+
 <body>
 
-    <header>
+    <header class="entete">
         <h1>CLUEDO</h1>
         <p>Une enquête vous attend au manoir...</p>
     </header>
 
-    <main>
+    <main class="contenu">
         <h2>Bienvenue dans le manoir</h2>
 
         <p>
@@ -32,14 +34,19 @@ $nombrePersonnages = $personnages['total'];
             l'arme utilisée et la pièce du crime.
         </p>
 
-        <a href="nouvelle_partie.php">Nouvelle partie</a>
-        <p>Nombre de personnages disponibles : <?php echo $nombrePersonnages; ?></p>
-        <a href="regles.php">Consulter les règles du jeu</a>
+        <a class="bouton" href="nouvelle_partie.php">Nouvelle partie</a>
+
+        <p class="nombre-personnages">
+            Nombre de personnages disponibles : <?php echo $nombrePersonnages; ?>
+        </p>
+
+        <a class="lien-regles" href="regles.php">Consulter les règles du jeu</a>
     </main>
 
-    <footer>
+    <footer class="pied-page">
         <p>Projet BTS SIO</p>
     </footer>
 
 </body>
+
 </html>

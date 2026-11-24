@@ -73,44 +73,50 @@ if (!isset($_SESSION['arme']) || !isset($_SESSION['piece_secrete'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nouvelle partie - Cluedo</title>
+    <link rel="stylesheet" href="../assets/style.css">
 </head>
+
 <body>
 
-    <h1>Nouvelle partie</h1>
+    <header class="entete">
+        <h1>Nouvelle partie</h1>
+        <p>Bienvenue dans une nouvelle enquête !</p>
+    </header>
 
-    <p>Bienvenue dans une nouvelle enquête !</p>
-    
-    <h2>Choisissez votre personnage</h2>
+    <main class="contenu">
+        <h2>Choisissez votre personnage</h2>
 
-    <form method="POST" action="nouvelle_partie.php">
+        <form method="POST" action="nouvelle_partie.php" class="form-personnage">
+
+            <?php
+                while ($personnage = $resultat->fetchArray(SQLITE3_ASSOC)) {
+                    echo "<p class='choix-personnage'>";
+                    echo "<input type='radio' name='id_personnage' value='" . $personnage['id_personnage'] . "' required";
+
+                    if (isset($_SESSION['id_personnage']) && $_SESSION['id_personnage'] == $personnage['id_personnage']) {
+                        echo " checked";
+                    }
+
+                    echo ">";
+                    echo htmlspecialchars($personnage['nom_personnage']);
+                    echo "</p>";
+                }
+            ?>
+
+            <button type="submit" class="bouton">Valider mon personnage</button>
+
+        </form>
 
         <?php
-            while ($personnage = $resultat->fetchArray(SQLITE3_ASSOC)) {
-                echo "<p>";
-                echo "<input type='radio' name='id_personnage' value='" . $personnage['id_personnage'] . "' required";
-
-                if (isset($_SESSION['id_personnage']) && $_SESSION['id_personnage'] == $personnage['id_personnage']) {
-                    echo " checked";
-                }
-
-                echo ">";
-                echo htmlspecialchars($personnage['nom_personnage']);
-                echo "</p>";
-            }
+        if ($personnageChoisi !== null) {
+            echo "<h3>Vous avez choisi : ";
+            echo htmlspecialchars($personnageChoisi['nom_personnage']);
+            echo "</h3>";
+        }
         ?>
 
-        <button type="submit">Valider mon personnage</button>
-
-    </form>
-
-    <?php
-    if ($personnageChoisi !== null) {
-        echo "<h3>Vous avez choisi : ";
-        echo htmlspecialchars($personnageChoisi['nom_personnage']);
-        echo "</h3>";
-    }
-    ?>
-    <a href="accueil.php">Retour à l'accueil</a>
+        <a class="lien-regles" href="accueil.php">Retour à l'accueil</a>
+    </main>
 
 </body>
 </html>
