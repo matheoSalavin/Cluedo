@@ -1,12 +1,12 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>Règles du jeu - Cluedo</title>
+    <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
-
+    <main class="contenu">
     <h1>Règles du jeu</h1>
 
     <h2>Objectif</h2>
@@ -46,5 +46,6 @@
 
     <a href="accueil.php">Retour à l'accueil</a>
 
+    </main>
 </body>
 </html>

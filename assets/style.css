@@ -140,3 +140,31 @@ a:hover {
 .contenu-partie th {
     background-color: #f2f2f2;
 }
+
+
+/* Page des règles */
+
+.contenu h2 {
+    margin-top: 25px;
+    color: #8b0000;
+}
+
+.contenu ol {
+    padding-left: 25px;
+    line-height: 1.8;
+}
+
+.contenu li {
+    margin-bottom: 8px;
+}
+
+.contenu p {
+    line-height: 1.6;
+}
+
+/* Liste des pièces visitées */
+
+.contenu-partie ul {
+    list-style-position: inside;
+    padding-left: 0;
+}
